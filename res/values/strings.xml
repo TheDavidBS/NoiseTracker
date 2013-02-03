@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Noise Tracker is running... Please click the &quot;Home&quot; button.</string>
+    <string name="app_name">NoiseTracker</string>
+    <string name="activity_name">NoiseTrackerApp</string>
+    <string name="service_name">NoiseTrackerService</string>
+</resources>
