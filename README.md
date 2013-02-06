@@ -1,4 +1,0 @@
-NoiseTracker
-============
-
-Android Application
