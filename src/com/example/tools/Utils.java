@@ -36,4 +36,10 @@ public class Utils {
 
 		return (minutes < 10 ? ("0"+minutes) : minutes) + ":" + (seconds < 10 ? ("0"+seconds) : seconds);
 	}
+	
+	public static enum eAndroidType {
+		SAMSUNG_W,
+		SAMSUNG_S3,
+		MOTOROLA
+	}
 }

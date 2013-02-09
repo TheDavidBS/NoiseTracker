@@ -1,6 +1,5 @@
 package com.android.music.player.service;
-
-import com.example.tools.Utils;
+import com.android.music.player.service.ICorePlayerService;
 
 import android.content.ComponentName;
 import android.content.ServiceConnection;
@@ -13,15 +12,15 @@ public class CorePlayerServiceConnection implements ServiceConnection {
     private ICorePlayerService mService;
 
 	public void onServiceConnected(ComponentName name, IBinder boundService) {
-        Log.i("CorePlayerServiceConnection", "Connected! Name: " + name.getClassName());
+        Log.i("CorePlayerServiceConnection - W", "Connected! Name: " + name.getClassName());
 
         // This is the important line
         mService = ICorePlayerService.Stub.asInterface(boundService);
 
         // If all went well, now we can use the interface
         try {
-        	Log.i("CorePlayerServiceConnection", "Duration(milli): " + mService.getDuration() + "   Duration(Clock): " + Utils.getClockTime(mService.getDuration()));
-            Log.i("CorePlayerServiceConnection", "getIndexOfPlayList(milli): " + mService.getIndexOfPlayList() + " getIndexOfPlayList(clock): " + Utils.getClockTime(mService.getIndexOfPlayList()));
+        	//Log.i("CorePlayerServiceConnection", "Duration(milli): " + mService.getDuration() + "   Duration(Clock): " + Utils.getClockTime(mService.getDuration()));
+            //Log.i("CorePlayerServiceConnection", "getIndexOfPlayList(milli): " + mService.getIndexOfPlayList() + " getIndexOfPlayList(clock): " + Utils.getClockTime(mService.getIndexOfPlayList()));
             
             if (mService.isPlaying()) {
                 Log.i("CorePlayerServiceConnection", "Music player is playing.");

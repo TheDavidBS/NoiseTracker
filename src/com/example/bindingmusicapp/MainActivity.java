@@ -2,11 +2,11 @@ package com.example.bindingmusicapp;
 import com.example.tools.Logger;
 import com.example.tools.Logger.LogLevel;
 import java.io.IOException;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -31,18 +31,23 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// TODO: Debug: remove after testing
-		printRunningServices();
-		
 		// starting out tracking service
 		Logger.SysAppend(LogLevel.DEBUG, "Sendind an Intent to start the MainService...", methodName);
+		
+		ActivityManager am = (ActivityManager)this.getSystemService(ACTIVITY_SERVICE);
+
+		List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(100);
+
+		for (int i=0; i<rs.size(); i++) {
+			ActivityManager.RunningServiceInfo rsi = rs.get(i);
+			Log.i("Service", "Process " + rsi.process + " with component " + rsi.service.getClassName());
+		}
+		
 		Intent intent = new Intent(this, MainService.class);
 		startService(intent);
 		
 		Logger.SysAppend(LogLevel.INFO, "<<<\n", methodName);
 	}
-	
-
 	
 	@Override
 	public void onDestroy() {
@@ -60,14 +65,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
-	
-	
-	// TODO: Debug method
-	private void printRunningServices() {
-	    ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-	    for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-	    	Log.i("Service: ", service.service.getClassName());
-	    }
-	}
-
 }

@@ -9,12 +9,12 @@ public class SongInfo {
 	
 	public int StartTimeInMilli = 0;
 	public int StopTimeInMilli = 0;
-	public SongState State; 
+	public eSongState State; 
 	
 	
 	public SongInfo()
 	{
-		State = SongState.Empty;
+		State = eSongState.Empty;
 	}
 	
 	public void Clone(SongInfo iSongInfo)
@@ -70,7 +70,7 @@ public class SongInfo {
 		this.mDuration = mDuration;
 	}
 
-	public enum SongState {
+	public enum eSongState {
 		Empty, Play, Pause, Resume, Stop
 	}
 	

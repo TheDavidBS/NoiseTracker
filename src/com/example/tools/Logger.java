@@ -11,7 +11,7 @@ import android.util.Log;
 
 @SuppressLint("SimpleDateFormat")
 public class Logger {
-	private static final String LOGS_DIRECTORY = "NoiseTrackerDBS";
+	private static final String LOGS_DIRECTORY = "NoiseTracker_DB";
 	private static final String SYS_LOG_FILENAME = "SystemLog.txt";
 	private static final String CSV_LOG_FILENAME = "ApplicationLog.csv";
 	private static File sSystemFile = null;
@@ -43,7 +43,7 @@ public class Logger {
 			// the csv header
 			try {
 				BufferedWriter buf = new BufferedWriter(new FileWriter(sCsvFile, true));
-				buf.append("LogTime, MP3/WAV File Name, Track, Album, Artist, Track Duration (clock), Start Listening From, Pause/Stop Time, Listening Duration, State, Volume");
+				buf.append("LogTime, MP3/WAV File Name, Track, Album, Artist, Track Duration (clock), Start Listening From, Pause/Stop Time, Listening Duration, State, Volume, Events");
 				buf.newLine();
 				buf.close();
 			} catch (IOException e) { }
